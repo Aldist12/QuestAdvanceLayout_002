@@ -17,109 +17,60 @@ import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
-@Preview (showBackground = true)
+@Preview(showBackground = true)
 @Composable
 fun PlayActivity(modifier: Modifier = Modifier){
-    Column (modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = modifier.fillMaxSize()) {
         SectionHeader()
-        Spacer(modifier = Modifier.padding(20.dp))
-        Text(
-            text = "Kepada YTH"
-        )
-        Text(text = "Kepala Stasiun")
-        Spacer(modifier = Modifier.padding(20.dp))
-
-        MainSection(
-            judulParam = "Nama",
-            isiParam = "Aldi Septiyanto"
-        )
-        MainSection(
-            judulParam = "Kelas",
-            isiParam = "Pengembangan Aplikasi Mobile"
-        )
-        MainSection(
-            judulParam = "NIM",
-            isiParam = "20210140002"
-        )
-        MainSection(
-            judulParam = "Alamat",
-            isiParam = "Yogyakarta"
-        )
+        Spacer(modifier = Modifier.padding(8.dp))
+        Text(text = "Kepada Yth :", Modifier.padding(start = 8.dp))
+        Text(text = "Kepala Stasiun", Modifier.padding(start = 8.dp))
+        MainSection(judulParam = "Nama", isipParam = "Aldi Septiyanto")
+        MainSection(judulParam = "Kelas", isipParam = "Pengembangan Aplikasi Mobile")
+        MainSection(judulParam = "NIM", isipParam = "20210140002")
+        MainSection(judulParam = "Keterangan", isipParam = "Sebagai Syarat Kelulusan")
     }
 }
 
 @Composable
 fun SectionHeader(){
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .background(Color.DarkGray)){
-        Row (
-            modifier = Modifier.padding(15.dp)
-        ){
-            Box(contentAlignment = Alignment.BottomEnd){
-                Image(
-                    painter = painterResource(id = R.drawable.tvriyogyakarta),
-                    contentDescription = "",
-                    Modifier
-                        .size(110.dp)
-                        .clip(shape = CircleShape)
-                )
-                Icon(
-                    Icons.Filled.Check,
-                    contentDescription = "",
-                    Modifier
-                        .padding(end = 15.dp)
-                        .size(30.dp),
-                    tint = Color.Red
-
-                )
-            }
-            Column (Modifier.padding(15.dp)) {
-                Text(
-                    text = "Media Pemersatu Bangsa",
-                    color = Color.White
-                )
-                Text(
-                    text = "TVRI YOGYAKARTA",
-                    color = Color.White
-                )
+    Column {
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .background(color = Color.DarkGray)) {
+            Row(
+                modifier = Modifier.padding(15.dp)
+            ) {
+                Box(contentAlignment = Alignment.BottomEnd) {
+                    Image(painter = painterResource(id = R.drawable.tvriyogyakarta),
+                        contentDescription = null,
+                        Modifier.size(90.dp))
+                    Icon(Icons.Filled.Check,
+                        contentDescription = null,
+                        Modifier
+                            .padding(end = 1.dp)
+                            .size(25.dp),
+                        tint = Color.Red )
+                }
+                Column (Modifier.padding(15.dp)) {
+                    Text(text = "TVRI YOGYAKARTA", color = Color.White)
+                    Spacer(Modifier.padding(3.dp))
+                    Text(text = "Media Pemersatu Bangsa", color = Color.White)
+                }
             }
         }
     }
 }
 
 @Composable
-fun MainSection(
-    judulParam: String,
-    isiParam: String
-
-){
-    Column(
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier.padding(3.dp)
-    ) {
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(3.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-
-        ) {
-            Text(
-                text = judulParam,
-                modifier = Modifier.weight(0.8f)
-            )
-            Text(
-                text = " : ",
-                modifier = Modifier.weight(0.2f)
-            )
-            Text(
-                text = "$isiParam",
-                modifier = Modifier.weight(2f)
-            )
+fun MainSection(judulParam:String, isipParam:String){
+    Column {
+        Row(Modifier.fillMaxWidth().padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween) {
+            Text(text = judulParam, Modifier.weight(0.8f))
+            Text(text = ":", Modifier.weight(0.2f))
+            Text(text = isipParam, Modifier.weight(2f))
         }
     }
-
 }
